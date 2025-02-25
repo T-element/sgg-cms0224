@@ -10,14 +10,23 @@
 
 <script setup>
 import { ref } from 'vue'
-import LoginBox from './modules/loginBox.vue'
+import LoginBox from './cpns/loginBox.vue'
+import { loginRequest } from '@/services'
+import router from '@/router'
 
 const loginBoxRef = ref()
 function onLoginClick() {
+  const formData = loginBoxRef.value.getFormData()
   const validate = loginBoxRef.value.getValidate()
-  validate((valid) => {
+  validate(async (valid) => {
     if (valid) {
       console.log('登录成功')
+      const res = await loginRequest(formData)
+      console.log(res)
+      localStorage.setItem('token', res.data.data)
+      localStorage.setItem('username', formData.username)
+      localStorage.setItem('password', formData.password)
+      router.push('/home')
     } else {
       console.log('登录失败')
     }

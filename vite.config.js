@@ -24,4 +24,13 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
+  server: {
+    proxy: {
+      '/dev': {
+        target: 'http://sph-api.atguigu.cn',
+        changeOrigin: true,
+        rewrite: (path) => path.replace('/dev', ''),
+      },
+    },
+  },
 })

@@ -30,11 +30,15 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from 'vue'
+import { ref, reactive } from 'vue'
 import Dentify from './dentify.vue'
 import useDentify from '@/hooks/useDentify'
 
-const formData = ref({})
+const formData = ref({
+  username: localStorage.getItem('username') ?? '',
+  password: localStorage.getItem('password') ?? '',
+  dentify: undefined,
+})
 const { identifyCode, refreshCode } = useDentify()
 refreshCode()
 
@@ -49,9 +53,9 @@ const rules = reactive({
 //username验证函数
 function usernamePass(rule, value, cb) {
   if (!value) return cb(new Error('请输入帐号'))
-  const usernameReg = new RegExp(/^[A-Za-z0-9]{6,20}$/)
+  const usernameReg = new RegExp(/^[A-Za-z0-9]{5,20}$/)
   if (!usernameReg.test(value)) {
-    return cb(new Error('请输入6~20位的字母或数字'))
+    return cb(new Error('请输入5~20位的字母或数字'))
   } else {
     return cb()
   }
@@ -70,8 +74,9 @@ function passwordPass(rule, value, cb) {
 
 //dentify验证函数
 function checkDentify(rule, value, cb) {
-  if (!value) return cb(new Error('请输入验证码'))
-  if (identifyCode.value !== value) {
+  // if (!value) return cb(new Error('请输入验证码'))
+  if (false) {
+    // if (identifyCode.value !== value) {
     return cb(new Error('请输入正确的验证码'))
   } else {
     return cb()
@@ -80,6 +85,7 @@ function checkDentify(rule, value, cb) {
 
 defineExpose({
   getValidate: () => formRef.value.validate,
+  getFormData: () => ({ ...formData.value }),
 })
 </script>
 
