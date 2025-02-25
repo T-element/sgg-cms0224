@@ -7,9 +7,15 @@ import router from './router'
 import './assets/css/index.css'
 import 'normalize.css'
 
+//全局引入elemet-plus图标
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+
 const app = createApp(App)
 
 app.use(createPinia())
 app.use(router)
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+  app.component(key, component)
+}
 
 app.mount('#app')
