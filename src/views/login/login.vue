@@ -22,8 +22,12 @@ function onLoginClick() {
     if (valid) {
       const res = await loginRequest(formData)
       if (res.data.ok !== true) {
-        ElMessageBox.alert('账号或密码错误', '', {
-          center: true,
+        // ElMessageBox.alert('账号或密码错误', '', {
+        //   center: true,
+        // })
+        ElNotification({
+          message: '账号或密码错误',
+          type: 'error',
         })
       } else {
         console.log('登录成功')
@@ -32,11 +36,22 @@ function onLoginClick() {
         })
         localStorage.setItem('username', formData.username)
         localStorage.setItem('password', formData.password)
+
+        ElNotification({
+          title: 'Hi, 你好',
+          message: '登录成功',
+          type: 'success',
+        })
         router.push('/home')
       }
     } else {
-      ElMessageBox.alert('账号或密码错误', '', {
-        center: true,
+      // ElMessageBox.alert('账号或密码错误', '', {
+      //   center: true,
+      // })
+
+      ElNotification({
+        message: '账号或密码错误',
+        type: 'error',
       })
     }
   })
