@@ -20,15 +20,24 @@ function onLoginClick() {
   const validate = loginBoxRef.value.getValidate()
   validate(async (valid) => {
     if (valid) {
-      console.log('登录成功')
       const res = await loginRequest(formData)
-      console.log(res)
-      localStorage.setItem('token', res.data.data)
-      localStorage.setItem('username', formData.username)
-      localStorage.setItem('password', formData.password)
-      router.push('/home')
+      if (res.data.ok !== true) {
+        ElMessageBox.alert('账号或密码错误', '', {
+          center: true,
+        })
+      } else {
+        console.log('登录成功')
+        localStorage.setItem('token', res.data.data, {
+          center: true,
+        })
+        localStorage.setItem('username', formData.username)
+        localStorage.setItem('password', formData.password)
+        router.push('/home')
+      }
     } else {
-      console.log('登录失败')
+      ElMessageBox.alert('账号或密码错误', '', {
+        center: true,
+      })
     }
   })
 }
@@ -63,6 +72,11 @@ function onLoginClick() {
     .el-button {
       width: 100%;
     }
+  }
+
+  :global(.el-message-box__content) {
+    margin: 10px 0;
+    font-size: 15px;
   }
 }
 </style>
