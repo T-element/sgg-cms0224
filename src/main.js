@@ -6,6 +6,7 @@ import router from './router'
 
 import './assets/css/index.css'
 import 'normalize.css'
+import 'element-plus/theme-chalk/dark/css-vars.css'
 
 //全局引入elemet-plus图标
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'

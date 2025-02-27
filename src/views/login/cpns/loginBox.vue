@@ -54,7 +54,7 @@ const rules = reactive({
 function usernamePass(rule, value, cb) {
   if (!value) return cb(new Error('请输入帐号'))
   const usernameReg = new RegExp(/^[A-Za-z0-9]{5,20}$/)
-  if (!usernameReg.test(value)) {
+  if (!usernameReg.test(value.trim())) {
     return cb(new Error('请输入5~20位的字母或数字'))
   } else {
     return cb()
@@ -65,7 +65,7 @@ function usernamePass(rule, value, cb) {
 function passwordPass(rule, value, cb) {
   if (!value) return cb(new Error('请输入密码'))
   const passwordReg = new RegExp(/^[A-Za-z0-9]{3,}$/)
-  if (!passwordReg.test(value)) {
+  if (!passwordReg.test(value.trim())) {
     return cb(new Error('请输入3位以上的字母或数字'))
   } else {
     return cb()

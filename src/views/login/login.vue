@@ -13,6 +13,7 @@ import { ref } from 'vue'
 import LoginBox from './cpns/loginBox.vue'
 import { loginRequest } from '@/services'
 import router from '@/router'
+import dayjs from 'dayjs'
 
 const loginBoxRef = ref()
 function onLoginClick() {
@@ -22,9 +23,6 @@ function onLoginClick() {
     if (valid) {
       const res = await loginRequest(formData)
       if (res.data.ok !== true) {
-        // ElMessageBox.alert('账号或密码错误', '', {
-        //   center: true,
-        // })
         ElNotification({
           message: '账号或密码错误',
           type: 'error',
@@ -37,18 +35,26 @@ function onLoginClick() {
         localStorage.setItem('username', formData.username)
         localStorage.setItem('password', formData.password)
 
+        const currentHour = dayjs().hour()
+        let welcomeTime = ''
+        if (currentHour > 6 && currentHour < 10) {
+          welcomeTime = '早上好'
+        } else if (currentHour > 10 && currentHour < 14) {
+          welcomeTime = '中午好'
+        } else if (currentHour > 14 && currentHour < 19) {
+          welcomeTime = '下午好'
+        } else {
+          welcomeTime = '晚上好'
+        }
+
         ElNotification({
-          title: 'Hi, 你好',
+          title: `Hi, ${welcomeTime}`,
           message: '登录成功',
           type: 'success',
         })
         router.push('/home')
       }
     } else {
-      // ElMessageBox.alert('账号或密码错误', '', {
-      //   center: true,
-      // })
-
       ElNotification({
         message: '账号或密码错误',
         type: 'error',
