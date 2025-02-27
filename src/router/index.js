@@ -14,8 +14,19 @@ const router = createRouter({
       component: login,
     },
     {
-      path: '/home',
-      component: () => import('@/views/home/main.vue'),
+      path: '/main',
+      component: () => import('@/views/main/main.vue'),
+      redirect: '/main/home',
+      children: [
+        {
+          path: '/main/home',
+          component: () => import('@/views/main/modules/home/home.vue'),
+        },
+      ],
+    },
+    {
+      path: '/:pathMath(.*)*',
+      component: () => import('@/views/notFound/notFound.vue'),
     },
   ],
 })

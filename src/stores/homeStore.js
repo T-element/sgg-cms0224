@@ -5,6 +5,7 @@ const useHomeStore = defineStore('homeStore', {
   state() {
     return {
       menuList: [],
+      isDark: false,
     }
   },
   actions: {

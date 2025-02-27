@@ -4,8 +4,8 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
-import './assets/css/index.css'
 import 'normalize.css'
+import './assets/css/index.css'
 import 'element-plus/theme-chalk/dark/css-vars.css'
 
 //全局引入elemet-plus图标

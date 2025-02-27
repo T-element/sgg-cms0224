@@ -52,7 +52,7 @@ function onLoginClick() {
           message: '登录成功',
           type: 'success',
         })
-        router.push('/home')
+        router.push('/main')
       }
     } else {
       ElNotification({

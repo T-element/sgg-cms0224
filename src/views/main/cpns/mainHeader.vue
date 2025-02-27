@@ -59,7 +59,10 @@
 
 <script setup>
 import router from '@/router'
+import useHomeStore from '@/stores/homeStore'
 import { ref } from 'vue'
+
+const homeStore = useHomeStore()
 
 const isCollapse = ref(false)
 const emit = defineEmits(['changeMenuState'])
@@ -97,6 +100,7 @@ const onFullScreenClick = () => {
 const onChangeMode = () => {
   const htmlEL = document.documentElement
   htmlEL.classList.toggle('dark')
+  homeStore.isDark = !homeStore.isDark
 }
 const onExitSystem = () => {
   router.push('/login')

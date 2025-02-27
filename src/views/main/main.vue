@@ -12,7 +12,9 @@
         <el-header class="header">
           <HomeHeader @changeMenuState="handleChangeMenuState" />
         </el-header>
-        <el-main class="main">Main</el-main>
+        <el-main class="main">
+          <RouterView />
+        </el-main>
       </el-container>
     </el-container>
   </div>
@@ -22,6 +24,7 @@
 import { ref } from 'vue'
 import HomeAside from './cpns/mainAside.vue'
 import HomeHeader from './cpns/mainHeader.vue'
+import { RouterView } from 'vue-router'
 
 const isCollapse = ref(false)
 function handleChangeMenuState(data) {
@@ -61,7 +64,7 @@ function handleChangeMenuState(data) {
     .header {
       padding: 0;
       border-bottom: 1px solid lightgray;
-      box-shadow: 0 1px 3px #ccc;
+      box-shadow: 0 5px 3px -5px #ccc;
     }
 
     .el-main {

@@ -1,0 +1,12 @@
+<template>
+  <div class="notFound">
+    <h1>404 NOT FOUND</h1>
+  </div>
+</template>
+
+<script setup></script>
+
+<style lang="less" scoped>
+.notFound {
+}
+</style>
