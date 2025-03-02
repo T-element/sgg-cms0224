@@ -10,7 +10,7 @@ import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import path from 'path'
 
-const pathSrc = path.resolve(__dirname, 'src')
+const pathSrc = path.resolve(__dirname, 'public')
 
 // https://vite.dev/config/
 export default defineConfig({

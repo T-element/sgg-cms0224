@@ -55,6 +55,13 @@ class JTRequest {
       method: 'PATCH',
     })
   }
+
+  put(config) {
+    return this.request({
+      ...config,
+      method: 'PUT',
+    })
+  }
 }
 
 export default JTRequest

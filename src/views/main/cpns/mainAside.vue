@@ -9,20 +9,20 @@
       :collapse="isCollapse"
       :collapse-transition="false"
     >
-      <el-menu-item index="1">
+      <el-menu-item index="1" @click="onItemClick('/main/home')">
         <el-icon><HomeFilled /></el-icon>
         <span>首页</span>
       </el-menu-item>
       <el-menu-item index="2">
         <el-icon><Platform /></el-icon>
-        <span>Screen</span>
+        <span>数据大屏</span>
       </el-menu-item>
       <el-sub-menu index="3">
         <template #title>
           <el-icon><Lock /></el-icon>
           <span>权限管理</span>
         </template>
-        <el-menu-item index="3-1">
+        <el-menu-item index="3-1" @click="onItemClick('/main/permission/user')">
           <el-icon><User /></el-icon>
           <span>用户管理</span>
         </el-menu-item>
@@ -62,12 +62,18 @@
 </template>
 
 <script setup>
+import router from '@/router'
+
 defineProps({
   isCollapse: {
     type: Boolean,
     default: false,
   },
 })
+
+const onItemClick = (url) => {
+  router.push(url)
+}
 </script>
 
 <style lang="less" scoped>

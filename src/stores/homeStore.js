@@ -11,7 +11,7 @@ const useHomeStore = defineStore('homeStore', {
   actions: {
     async fetchMenuList() {
       const res = await getMenuList()
-      console.log(res.data.data.menuList)
+      this.menuList = res.data.data.menuList
     },
   },
 })
