@@ -2,7 +2,7 @@
   <div class="pageContent">
     <el-card>
       <div class="container">
-        <div class="top">
+        <div class="top" v-if="!!config?.top">
           <template v-for="(item, index) in config.top" :key="index">
             <el-button
               :type="item.type"
@@ -14,11 +14,13 @@
           </template>
         </div>
         <el-table
+          v-if="!!config?.table"
           :data="tableData"
           border
           style="width: 100%"
           :header-cell-style="{ textAlign: 'center' }"
           :cell-style="{ textAlign: 'center' }"
+          row-key="id"
         >
           <template v-for="(item, index) in config.table" :key="index">
             <el-table-column v-if="item.type === 'operation'" v-bind="item">
@@ -36,7 +38,16 @@
                     @confirm="onBtnClick({ btnName: iten.name, rowData: scoped.row })"
                   >
                     <template #reference>
-                      <el-button v-bind="iten">
+                      <el-button
+                        v-bind="iten"
+                        :disabled="
+                          isBtnDisable({
+                            rowName: scoped.row.name,
+                            btnName: iten.name,
+                            type: scoped.row.type,
+                          })
+                        "
+                      >
                         {{ iten.btnText }}
                       </el-button>
                     </template>
@@ -44,6 +55,13 @@
                   <el-button
                     v-else
                     v-bind="iten"
+                    :disabled="
+                      isBtnDisable({
+                        rowName: scoped.row.name,
+                        btnName: iten.name,
+                        type: scoped.row.type,
+                      })
+                    "
                     @click="onBtnClick({ btnName: iten.name, rowData: scoped.row })"
                   >
                     {{ iten.btnText }}
@@ -61,6 +79,7 @@
           </template>
         </el-table>
         <el-pagination
+          v-if="!!listTotal"
           :page-sizes="[10, 20, 30, 40]"
           :background="true"
           layout="prev, pager, next, jumper, ->, sizes, total"
@@ -77,16 +96,28 @@
 defineProps({
   config: {
     type: Object,
-    require: true,
+    required: true,
   },
   tableData: {
     type: Object,
-    require: true,
+    required: true,
   },
   listTotal: {
     type: Number,
   },
 })
+
+const isBtnDisable = (val) => {
+  if (val.rowName === '全部数据') {
+    if (val.btnName === 'edit' || val.btnName === 'delete') {
+      return true
+    }
+  }
+
+  if (val.type == 2 && val.btnName === 'addMenu') {
+    return true
+  }
+}
 
 const emit = defineEmits(['btnClick', 'pagingSizeChange', 'pagingPageChange'])
 const onBtnClick = (prop) => {

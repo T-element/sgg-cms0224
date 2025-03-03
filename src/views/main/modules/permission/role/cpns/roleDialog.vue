@@ -48,7 +48,4 @@ const onConfirmClick = () => {
 }
 </script>
 
-<style lang="less" scoped>
-.roleDialog {
-}
-</style>
+<style lang="less" scoped></style>

@@ -30,7 +30,7 @@
           <el-icon><Avatar /></el-icon>
           <span>角色管理</span>
         </el-menu-item>
-        <el-menu-item index="3-3">
+        <el-menu-item index="3-3" @click="onItemClick('/main/permission/menu')">
           <el-icon><List /></el-icon>
           <span>菜单管理</span>
         </el-menu-item>

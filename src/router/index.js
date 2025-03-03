@@ -30,6 +30,10 @@ const router = createRouter({
           path: '/main/permission/role',
           component: () => import('@/views/main/modules/permission/role/role.vue'),
         },
+        {
+          path: '/main/permission/menu',
+          component: () => import('@/views/main/modules/permission/menu/menu.vue'),
+        },
       ],
     },
     {
