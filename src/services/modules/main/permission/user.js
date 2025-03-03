@@ -1,7 +1,6 @@
 import jtRequest from '@/services/request/jtRequest'
 
 export function getUserList(config) {
-  console.log(config)
   const { page, limit, name = '' } = config
   return jtRequest.get({
     url: `/admin/acl/user/${page}/${limit}?username=${name}`,

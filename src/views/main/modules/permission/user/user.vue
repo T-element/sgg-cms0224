@@ -145,17 +145,18 @@ function showExecuteStatus(info) {
 
 const handlePagingSizeChange = (size) => {
   pagingConfig.value.limit = size
-  dbFetchUserList({ ...pagingConfig.value })
+  dbFetchUserList({ ...pagingConfig.value, ...searchData.value })
 }
 const handlePagingPageChange = (page) => {
   if (isSearchRequest) return
   pagingConfig.value.page = page
-  dbFetchUserList({ ...pagingConfig.value })
+  dbFetchUserList({ ...pagingConfig.value, ...searchData.value })
 }
 
 const searchConfig = {
   title: '用户名',
   placeHolder: '请输入用户名',
+  key: 'name',
 }
 let isSearchRequest = false
 const searchData = ref({ name: '' })

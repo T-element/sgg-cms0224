@@ -3,8 +3,8 @@
     <el-card>
       <div class="container">
         <el-form ref="formRef" :model="formdata" label-width="auto" size="large">
-          <el-form-item :label="formConfig.title" style="width: 300px" prop="name">
-            <el-input :placeholder="formConfig.placeHolder" v-model="formdata.name" />
+          <el-form-item :label="formConfig.title" style="width: 300px" :prop="formConfig.key">
+            <el-input :placeholder="formConfig.placeHolder" v-model="formdata[formConfig.key]" />
           </el-form-item>
         </el-form>
         <div class="btns">

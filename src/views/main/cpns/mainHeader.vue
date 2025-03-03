@@ -95,7 +95,11 @@ const onRefreshClick = () => {
 }
 const onFullScreenClick = () => {
   const docEl = document.documentElement
-  docEl.offsetWidth === window.screen.width ? document.exitFullscreen() : docEl.requestFullscreen()
+  if (docEl.offsetWidth === window.screen.width && docEl.offsetHeight === window.screen.height) {
+    document.exitFullscreen()
+  } else {
+    docEl.requestFullscreen()
+  }
 }
 const onChangeMode = () => {
   const htmlEL = document.documentElement

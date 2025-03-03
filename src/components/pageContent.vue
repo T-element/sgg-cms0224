@@ -31,7 +31,7 @@
                     cancel-button-text="取消"
                     icon="InfoFilled"
                     icon-color="#FF9900"
-                    :title="`你确定要删除${scoped.row.username}?`"
+                    :title="`你确定要删除${scoped.row[iten.deleteKey]}?`"
                     confirm-button-type="danger"
                     @confirm="onBtnClick({ btnName: iten.name, rowData: scoped.row })"
                   >

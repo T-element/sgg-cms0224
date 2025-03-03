@@ -1,7 +1,7 @@
 <template>
   <div class="mainAside">
     <el-menu
-      active-text-color="#fff"
+      active-text-color="#409EFF"
       background-color="#001529"
       class="el-menu-vertical"
       default-active="1"
@@ -26,7 +26,7 @@
           <el-icon><User /></el-icon>
           <span>用户管理</span>
         </el-menu-item>
-        <el-menu-item index="3-2">
+        <el-menu-item index="3-2" @click="onItemClick('/main/permission/role')">
           <el-icon><Avatar /></el-icon>
           <span>角色管理</span>
         </el-menu-item>
