@@ -4,7 +4,7 @@
       <el-aside :width="isCollapse ? '60px' : '200px'" class="aside">
         <div class="tilte">
           <img src="@/assets/img/logo.png" alt="logo" class="icon" />
-          <div class="content">米塔后台管理系统</div>
+          <div class="content">甄选后台管理系统</div>
         </div>
         <HomeAside :is-collapse="isCollapse" />
       </el-aside>

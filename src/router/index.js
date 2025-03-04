@@ -23,6 +23,10 @@ const router = createRouter({
           component: () => import('@/views/main/modules/home/home.vue'),
         },
         {
+          path: '/main/screen',
+          component: () => import('@/views/main/modules/screen/screen.vue'),
+        },
+        {
           path: '/main/permission/user',
           component: () => import('@/views/main/modules/permission/user/user.vue'),
         },
