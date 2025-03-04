@@ -54,7 +54,7 @@ function handleChangeMenuState(data) {
 
         .content {
           margin-left: 10px;
-          color: #959ca6;
+          color: #fff;
           font-size: 15px;
           font-weight: 700;
         }

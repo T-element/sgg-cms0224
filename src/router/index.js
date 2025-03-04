@@ -34,6 +34,10 @@ const router = createRouter({
           path: '/main/permission/menu',
           component: () => import('@/views/main/modules/permission/menu/menu.vue'),
         },
+        {
+          path: '/main/goods/brand',
+          component: () => import('@/views/main/modules/goods/brand/brand.vue'),
+        },
       ],
     },
     {

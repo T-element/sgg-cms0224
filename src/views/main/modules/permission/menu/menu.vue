@@ -13,7 +13,4 @@ const mianStore = userMainStore()
 mianStore.fetchPermissionList()
 </script>
 
-<style lang="less" scoped>
-.menu {
-}
-</style>
+<style lang="less" scoped></style>

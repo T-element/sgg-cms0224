@@ -40,11 +40,11 @@
           <el-icon><Goods /></el-icon>
           <span>商品管理</span>
         </template>
-        <el-menu-item index="4-1">
+        <el-menu-item index="4-1" @click="onItemClick('/main/goods/brand')">
           <el-icon><ShoppingCart /></el-icon>
           <span>品牌管理</span>
         </el-menu-item>
-        <el-menu-item index="4-2">
+        <!-- <el-menu-item index="4-2">
           <el-icon><Management /></el-icon>
           <span>属性管理</span>
         </el-menu-item>
@@ -55,7 +55,7 @@
         <el-menu-item index="4-4">
           <el-icon><ScaleToOriginal /></el-icon>
           <span>Sku</span>
-        </el-menu-item>
+        </el-menu-item> -->
       </el-sub-menu>
     </el-menu>
   </div>

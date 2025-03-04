@@ -1,4 +1,4 @@
-import { getUserList } from '@/services'
+import { getBrandList, getUserList } from '@/services'
 import { getPermissionList, getRoleList } from '@/services/modules/main/permission/role'
 import { defineStore } from 'pinia'
 
@@ -10,6 +10,8 @@ const userMainStore = defineStore('mainStore', {
       roleList: [],
       roleListTotal: 0,
       permissionList: [],
+      brandList: [],
+      brandListTotal: 0,
     }
   },
   actions: {
@@ -26,6 +28,11 @@ const userMainStore = defineStore('mainStore', {
     async fetchPermissionList() {
       const res = await getPermissionList()
       this.permissionList = res.data.data
+    },
+    async fetchBrandList(config) {
+      const res = await getBrandList(config)
+      this.brandList = res.data.data.records
+      this.brandListTotal = res.data.data.total
     },
   },
 })
